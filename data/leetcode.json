@@ -1,0 +1,28 @@
+{
+    "respostas": [
+        {
+            "id": "resposta1",
+            "titulo": "Resposta 1",
+            "descricao": "Esta é a descrição da primeira resposta do LeetCode.",
+            "codigo": "function exemplo() { return true; }",
+            "diagramaPseudocodigo": "imagens/diagrama_pseudocodigo1.png",
+            "diagramaAtividades": "imagens/diagrama_atividades1.png"
+        },
+        {
+            "id": "resposta2",
+            "titulo": "Resposta 2",
+            "descricao": "Esta é a descrição da segunda resposta do LeetCode.",
+            "codigo": "function exemploDois() { return false; }",
+            "diagramaPseudocodigo": "imagens/diagrama_pseudocodigo2.png",
+            "diagramaAtividades": "imagens/diagrama_atividades2.png"
+        },
+        {
+            "id": "resposta3",
+            "titulo": "Resposta 3",
+            "descricao": "Esta é a descrição da terceira resposta do LeetCode.",
+            "codigo": "function exemploTres() { return 42; }",
+            "diagramaPseudocodigo": "imagens/diagrama_pseudocodigo3.png",
+            "diagramaAtividades": "imagens/diagrama_atividades3.png"
+        }
+    ]
+}
