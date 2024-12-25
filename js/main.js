@@ -19,27 +19,36 @@ document.addEventListener("DOMContentLoaded", () => {
     // Função para renderizar a página inicial
     function renderHome(data) {
         app.innerHTML = `
-            <h2>Bem-vindo ao LeetCode Respostas</h2>
-            <p>Selecione uma solução abaixo para visualizar os detalhes.</p>
+            <h2>Welcome to LeetCode Solutions</h2>
+            <p>Select a solution below to view its details.</p>
         `;
         renderMenu(data.respostas);
     }
 
     // Função para renderizar uma solução específica
     function renderResposta(resposta) {
+        const app = document.getElementById("app");
         app.innerHTML = `
             <h2>${resposta.titulo}</h2>
             <p>${resposta.descricao}</p>
-            <div>
-                <button id="btnPython">Solução em Python</button>
-                <button id="btnJava">Solução em Java</button>
+            <div style="margin: 20px 0;">
+                <img src="imagens/${resposta.id}_diagrama_atividades.svg" alt="Activity Diagram" style="max-width: 100%; height: auto;">
             </div>
-            <div id="solutionContent">
-                <p>Selecione uma solução para visualizar.</p>
+            <div style="text-align: center; margin: 20px 0;">
+                <p>Explore a solution by selecting the language</p>
             </div>
+            <div style="display: flex; justify-content: center; gap: 10px;">
+                <button id="btnPython" class="btn-icon">
+                    <i class="fa-brands fa-python"></i> Solution in Python
+                </button>
+                <button id="btnJava" class="btn-icon">
+                    <i class="fa-brands fa-java"></i> Solution in Java
+                </button>
+            </div>
+            <div id="solutionContent"></div>
         `;
 
-        // Configurar eventos de clique nos botões
+        // Configurar eventos dos botões
         document.getElementById("btnPython").addEventListener("click", () => {
             renderSolution("python", resposta.id);
         });
@@ -62,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 } else if (!route || route === "index") {
                     renderHome(data);
                 } else {
-                    app.innerHTML = "<p>Página não encontrada.</p>";
+                    app.innerHTML = "<p>Page not found.</p>";
                 }
             });
 
@@ -72,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         })
         .catch((error) => {
-            app.innerHTML = "<p>Erro ao carregar as soluções.</p>";
+            app.innerHTML = "<p>Error loading solutions.</p>";
             console.error(error);
         });
 });
