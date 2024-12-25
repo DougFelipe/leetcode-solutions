@@ -39,25 +39,26 @@ document.addEventListener("DOMContentLoaded", () => {
                 <img src="imagens/${resposta.id}_diagrama_atividades.svg" alt="Activity Diagram" style="max-width: 100%; height: auto;">
             </div>
             <div style="display: flex; justify-content: center; gap: 10px;">
-                <button id="btnPython" class="btn-icon">
-                    <i class="fa-brands fa-python"></i> Solution in Python
+                <button id="btnPython" class="btn-icon" title="Solution in Python">
+                    <i class="fab fa-python" style="font-size: 24px;"></i>
                 </button>
-                <button id="btnJava" class="btn-icon">
-                    <i class="fa-brands fa-java"></i> Solution in Java
+                <button id="btnJava" class="btn-icon" title="Solution in Java">
+                    <i class="fab fa-java" style="font-size: 24px;"></i>
                 </button>
             </div>
             <div id="solutionContent"></div>
         `;
-
+    
         // Configurar eventos dos botões
         document.getElementById("btnPython").addEventListener("click", () => {
             renderSolution("python", resposta.id);
         });
-
+    
         document.getElementById("btnJava").addEventListener("click", () => {
             renderSolution("java", resposta.id);
         });
     }
+    
 
     // Função para carregar o conteúdo da solução (adaptada para abordagem)
     function renderSolution(language, solutionId) {

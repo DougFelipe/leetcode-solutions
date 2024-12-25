@@ -73,17 +73,7 @@ footer {
     font-size: 0.9rem;
 }
 
-button {
-    padding: 10px 15px;
-    margin: 10px;
-    font-size: 1rem;
-    background-color: #3498db;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
+
 
 button:hover {
     background-color: #2980b9;
@@ -117,4 +107,30 @@ footer a {
 
 footer a:hover {
     color: #2980b9;
+}
+
+
+/* Botões com ícones */
+.btn-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    width: 50px;
+    height: 50px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 50%; /* Forma circular */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-icon:hover {
+    background-color: #2980b9;
+    transform: scale(1.1); /* Leve efeito de zoom ao passar o mouse */
+}
+
+.btn-icon i {
+    font-size: 24px; /* Tamanho do ícone */
 }
