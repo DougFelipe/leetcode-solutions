@@ -35,7 +35,7 @@ This project aims to present detailed solutions for programming problems on Leet
 
 ## Project Structure
 
-```plaintext
+```
 root
 ├── components/        # Reusable HTML components
 │   └── header.html
@@ -61,4 +61,4 @@ root
 │   └── router.js
 ├── index.html         # Project homepage
 ├── README.md          # Project documentation
-```plaintext
+```
