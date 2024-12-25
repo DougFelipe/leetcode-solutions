@@ -1,0 +1,7 @@
+{
+    "titulo": "Solução em Java para Árvore Binária de Busca",
+    "descricao": "Criamos uma classe Node e implementamos métodos para inserir e buscar valores em uma Árvore Binária de Busca (BST).",
+    "diagramaPseudocodigo": "imagens/java_diagrama_pseudocodigo3.png",
+    "diagramaAtividades": "imagens/java_diagrama_atividades3.png",
+    "codigo": "class Node {\n    int valor;\n    Node esquerda, direita;\n\n    public Node(int valor) {\n        this.valor = valor;\n        esquerda = direita = null;\n    }\n}\n\npublic Node inserir(Node raiz, int valor) {\n    if (raiz == null) {\n        return new Node(valor);\n    }\n    if (valor < raiz.valor) {\n        raiz.esquerda = inserir(raiz.esquerda, valor);\n    } else {\n        raiz.direita = inserir(raiz.direita, valor);\n    }\n    return raiz;\n}"
+}

@@ -1,0 +1,7 @@
+{
+    "titulo": "Solução em Python para Árvore Binária de Busca",
+    "descricao": "Implementamos a inserção e busca em uma Árvore Binária de Busca (BST) utilizando classes e métodos recursivos.",
+    "diagramaPseudocodigo": "imagens/python_diagrama_pseudocodigo3.png",
+    "diagramaAtividades": "imagens/python_diagrama_atividades3.png",
+    "codigo": "class Node:\n    def __init__(self, valor):\n        self.valor = valor\n        self.esquerda = None\n        self.direita = None\n\ndef inserir(raiz, valor):\n    if raiz is None:\n        return Node(valor)\n    if valor < raiz.valor:\n        raiz.esquerda = inserir(raiz.esquerda, valor)\n    else:\n        raiz.direita = inserir(raiz.direita, valor)\n    return raiz"
+}

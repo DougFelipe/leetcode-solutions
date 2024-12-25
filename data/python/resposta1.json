@@ -1,0 +1,7 @@
+{
+    "titulo": "Desafio: Soma de Dois Números",
+    "descricao": "Nesta solução abordamos o problema utilizando algoritmos eficientes para calcular a soma de dois números.",
+    "diagramaPseudocodigo": "imagens/python_diagrama_pseudocodigo1.png",
+    "diagramaAtividades": "imagens/python_diagrama_atividades1.png",
+    "codigo": "def soma(a, b):\n    return a + b"
+}

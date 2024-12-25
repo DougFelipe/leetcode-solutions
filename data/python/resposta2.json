@@ -1,0 +1,7 @@
+{
+    "titulo": "Solução em Python para Soma de Dois Números",
+    "descricao": "Nesta solução utilizamos um algoritmo eficiente para calcular a soma de dois números, explorando funções básicas da linguagem.",
+    "diagramaPseudocodigo": "imagens/python_diagrama_pseudocodigo1.png",
+    "diagramaAtividades": "imagens/python_diagrama_atividades1.png",
+    "codigo": "def soma(a, b):\n    return a + b"
+}
