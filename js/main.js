@@ -1,33 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const menu = document.getElementById("menu"); // Lista onde as soluções serão renderizadas
+    const app = document.getElementById("app");
 
-    // Carregar dados do JSON
-    fetch("data/leetcode.json")
-        .then((response) => response.json())
-        .then((data) => {
-            // Renderizar a lista de soluções
-            renderMenu(data.respostas);
-
-            // Configuração do roteamento
-            window.addEventListener("hashchange", () => {
-                const route = window.location.hash.substring(1);
-                const resposta = data.respostas.find((r) => r.id === route);
-                if (resposta) {
-                    renderResposta(resposta);
-                } else {
-                    renderHome(); // Voltar para a home se a rota não existir
-                }
-            });
-
-            // Exibir a página inicial no carregamento
-            if (!window.location.hash || window.location.hash === "#index") {
-                renderHome();
-            }
-        });
-
-    // Função para renderizar o menu
+    // Função para carregar e renderizar o menu
     function renderMenu(respostas) {
-        menu.innerHTML = ""; // Limpa qualquer conteúdo existente no menu
+        const menu = document.createElement("ul");
+        menu.id = "menu"; // Adiciona o ID ao menu
         respostas.forEach((resposta) => {
             const menuItem = document.createElement("li");
             const link = document.createElement("a");
@@ -36,25 +13,20 @@ document.addEventListener("DOMContentLoaded", () => {
             menuItem.appendChild(link);
             menu.appendChild(menuItem);
         });
+        app.appendChild(menu);
     }
 
     // Função para renderizar a página inicial
-    function renderHome() {
-        const app = document.getElementById("app");
+    function renderHome(data) {
         app.innerHTML = `
             <h2>Bem-vindo ao LeetCode Respostas</h2>
             <p>Selecione uma solução abaixo para visualizar os detalhes.</p>
-            <ul id="menu"></ul> <!-- Reinserir o menu -->
         `;
-        // Recria o menu na página inicial
-        fetch("data/leetcode.json")
-            .then((response) => response.json())
-            .then((data) => renderMenu(data.respostas));
+        renderMenu(data.respostas);
     }
 
     // Função para renderizar uma solução específica
     function renderResposta(resposta) {
-        const app = document.getElementById("app");
         app.innerHTML = `
             <h2>${resposta.titulo}</h2>
             <p>${resposta.descricao}</p>
@@ -76,4 +48,31 @@ document.addEventListener("DOMContentLoaded", () => {
             renderSolution("java", resposta.id);
         });
     }
+
+    // Carregar dados do JSON
+    fetch("data/leetcode.json")
+        .then((response) => response.json())
+        .then((data) => {
+            // Configuração de rotas
+            window.addEventListener("hashchange", () => {
+                const route = window.location.hash.substring(1);
+                const resposta = data.respostas.find((r) => r.id === route);
+                if (resposta) {
+                    renderResposta(resposta);
+                } else if (!route || route === "index") {
+                    renderHome(data);
+                } else {
+                    app.innerHTML = "<p>Página não encontrada.</p>";
+                }
+            });
+
+            // Renderizar a rota inicial
+            if (!window.location.hash || window.location.hash === "#index") {
+                renderHome(data);
+            }
+        })
+        .catch((error) => {
+            app.innerHTML = "<p>Erro ao carregar as soluções.</p>";
+            console.error(error);
+        });
 });
