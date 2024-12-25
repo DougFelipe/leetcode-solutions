@@ -12,8 +12,11 @@ function renderSolution(language, solutionId) {
                     <img src="${data.diagramaAtividades}" alt="Diagrama de Atividades" style="max-width: 45%;">
                 </div>
                 <h3>Código:</h3>
-                <pre><code>${data.codigo}</code></pre>
+                <pre><code class="language-java">${data.codigo}</code></pre>
             `;
+
+            // Ativar o Prism.js para destacar a sintaxe
+            Prism.highlightAll();
         })
         .catch((err) => {
             solutionContainer.innerHTML = "<p>Erro ao carregar a solução.</p>";
