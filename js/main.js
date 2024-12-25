@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <p>${resposta.abordagem || "No approach provided for this solution."}</p>
             </div>
             <div style="margin: 20px 0;">
-                <img src="imagens/${resposta.id}_diagrama_atividades.svg" alt="Activity Diagram" style="max-width: 100%; height: auto;">
+                <img src="${resposta.diagramaAtividades}" alt="Activity Diagram" style="max-width: 100%; height: auto;">
             </div>
             <div style="display: flex; justify-content: center; gap: 10px;">
                 <button id="btnPython" class="btn-icon" title="Solution in Python">
@@ -48,19 +48,18 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
             <div id="solutionContent"></div>
         `;
-    
+
         // Configurar eventos dos botões
         document.getElementById("btnPython").addEventListener("click", () => {
             renderSolution("python", resposta.id);
         });
-    
+
         document.getElementById("btnJava").addEventListener("click", () => {
             renderSolution("java", resposta.id);
         });
     }
-    
 
-    // Função para carregar o conteúdo da solução (adaptada para abordagem)
+    // Função para carregar o conteúdo da solução
     function renderSolution(language, solutionId) {
         const solutionContainer = document.getElementById("solutionContent");
 
