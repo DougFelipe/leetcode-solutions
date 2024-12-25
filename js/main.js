@@ -32,10 +32,11 @@ document.addEventListener("DOMContentLoaded", () => {
             <h2>${resposta.titulo}</h2>
             <p>${resposta.descricao}</p>
             <div style="margin: 20px 0;">
-                <img src="imagens/${resposta.id}_diagrama_atividades.svg" alt="Activity Diagram" style="max-width: 100%; height: auto;">
+                <h3>Approach</h3>
+                <p>${resposta.abordagem || "No approach provided for this solution."}</p>
             </div>
-            <div style="text-align: center; margin: 20px 0;">
-                <p>Explore a solution by selecting the language</p>
+            <div style="margin: 20px 0;">
+                <img src="imagens/${resposta.id}_diagrama_atividades.svg" alt="Activity Diagram" style="max-width: 100%; height: auto;">
             </div>
             <div style="display: flex; justify-content: center; gap: 10px;">
                 <button id="btnPython" class="btn-icon">
@@ -56,6 +57,27 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("btnJava").addEventListener("click", () => {
             renderSolution("java", resposta.id);
         });
+    }
+
+    // Função para carregar o conteúdo da solução (adaptada para abordagem)
+    function renderSolution(language, solutionId) {
+        const solutionContainer = document.getElementById("solutionContent");
+
+        fetch(`data/${language}/${solutionId}.json`)
+            .then((response) => response.json())
+            .then((data) => {
+                solutionContainer.innerHTML = `
+                    <h3>${data.titulo} - Solution in ${language.charAt(0).toUpperCase() + language.slice(1)}</h3>
+                    <pre><code class="language-${language}">${data.codigo}</code></pre>
+                `;
+
+                // Ativar o Prism.js para destacar a sintaxe
+                Prism.highlightAll();
+            })
+            .catch((err) => {
+                solutionContainer.innerHTML = "<p>Error loading the solution.</p>";
+                console.error(err);
+            });
     }
 
     // Carregar dados do JSON

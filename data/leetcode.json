@@ -2,9 +2,10 @@
     "respostas": [
         {
             "id": "two-sum",
-            "titulo": "Two Sum",
-            "descricao": "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target."
-        },
+            "titulo": "1. Two Sum",
+            "descricao": "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.",
+            "abordagem": "The solution to the \"Two Sum\" problem employs a hash map (dictionary) to achieve an efficient O(n) time complexity. The primary idea is to use the hash map to store numbers as keys and their corresponding indices as values while iterating through the array. For each element, we calculate the complement required to reach the target value by subtracting the current number from the target. We then check if this complement exists in the hash map. If it does, we have found a pair of numbers that sum up to the target, and their indices can be returned immediately. If not, we add the current number and its index to the hash map and continue iterating. This approach leverages the hash map's constant-time lookups to avoid the inefficiency of a nested loop, making it significantly faster than a brute-force solution, which has a time complexity of O(n²). By iterating through the list just once and using additional space for the hash map, the algorithm optimally balances time and space efficiency."
+        },        
         {
             "id": "resposta2",
             "titulo": "String Sorting",
