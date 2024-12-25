@@ -1,19 +1,19 @@
 {
     "respostas": [
         {
-            "id": "resposta1",
-            "titulo": "Soma de Dois Números",
-            "descricao": "Esta solução resolve o problema de soma de dois números."
+            "id": "two-sum",
+            "titulo": "Two Sum",
+            "descricao": "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target."
         },
         {
             "id": "resposta2",
-            "titulo": "Ordenação de Strings",
-            "descricao": "Esta solução aborda como ordenar strings de forma eficiente."
+            "titulo": "String Sorting",
+            "descricao": "This solution addresses how to sort strings efficiently."
         },
         {
             "id": "resposta3",
-            "titulo": "Árvore Binária de Busca",
-            "descricao": "Esta solução implementa uma árvore binária de busca."
+            "titulo": "Binary Search Tree",
+            "descricao": "This solution implements a binary search tree."
         }
     ]
 }
