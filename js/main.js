@@ -44,20 +44,30 @@ function renderResposta(resposta) {
         <div id="solutionContent"></div>
     `;
 
-    // Lista de linguagens suportadas para a solução
-    const supportedLanguages = ["python", "java", "javascript"];
+    // Lista de linguagens suportadas e seus ícones
+    const supportedLanguages = [
+        { id: "python", icon: "fab fa-python" },
+        { id: "java", icon: "fab fa-java" },
+        { id: "javascript", icon: "fab fa-js-square" },
+        { id: "go", icon: "fa-brands fa-golang" } // Ícone genérico para Go
+    ];
 
     // Renderizar botões dinamicamente para cada linguagem suportada
     const languageButtonsContainer = document.getElementById("languageButtons");
 
-    supportedLanguages.forEach(language => {
+    supportedLanguages.forEach(({ id, icon }) => {
         const button = document.createElement("button");
         button.className = "btn-icon";
-        button.id = `btn${language.charAt(0).toUpperCase() + language.slice(1)}`;
-        button.title = `Solution in ${language.charAt(0).toUpperCase() + language.slice(1)}`;
-        button.innerHTML = `<i class="fab fa-${language === "javascript" ? "js-square" : language}" style="font-size: 24px;"></i>`;
-        button.addEventListener("click", () => renderSolution(language, resposta.id));
+        button.id = `btn${id.charAt(0).toUpperCase() + id.slice(1)}`;
+        button.title = `Solution in ${id.charAt(0).toUpperCase() + id.slice(1)}`;
+        button.innerHTML = `<i class="${icon}" style="font-size: 24px;"></i>`;
+        button.addEventListener("click", () => renderSolution(id, resposta.id));
         languageButtonsContainer.appendChild(button);
+    });
+
+    // Ativar Prism.js para formatar o código quando uma linguagem é selecionada
+    document.querySelectorAll('pre code').forEach((block) => {
+        Prism.highlightElement(block);
     });
 }
 

@@ -1,0 +1,4 @@
+{
+    "codigo": "func twoSum(nums []int, target int) []int {\n    // Create a hash map to store the numbers we've seen and their indices\n    numToIndex := make(map[int]int)\n\n    // Iterate through the array\n    for i, num := range nums {\n        // Calculate the complement needed to reach the target\n        complement := target - num\n\n        // Check if the complement exists in the hash map\n        if index, found := numToIndex[complement]; found {\n            // If found, return the indices of the complement and the current number\n            return []int{index, i}\n        }\n\n        // If the complement is not found, store the current number and its index\n        numToIndex[num] = i\n    }\n\n    // If no solution is found (according to the problem, this won't happen)\n    return nil\n}"
+  }
+  
