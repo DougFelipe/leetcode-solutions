@@ -1,0 +1,4 @@
+{
+    "codigo": "/**\n * @param {number[]} nums\n * @param {number} target\n * @return {number[]}\n */\nvar twoSum = function(nums, target) {\n    // Create an object to store numbers and their indices\n    const numToIndex = {};\n\n    // Iterate through the array\n    for (let i = 0; i < nums.length; i++) {\n        // Calculate the complement needed to reach the target\n        const complement = target - nums[i];\n\n        // Check if the complement exists in the hash map\n        if (numToIndex[complement] !== undefined) {\n            // If found, return the indices of the complement and the current number\n            return [numToIndex[complement], i];\n        }\n\n        // If the complement is not found, store the current number and its index\n        numToIndex[nums[i]] = i;\n    }\n\n    // If no solution is found (per the problem's constraints, this won't happen)\n    throw new Error(\"No two sum solution\");\n};"
+  }
+  

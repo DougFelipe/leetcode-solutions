@@ -25,41 +25,44 @@ document.addEventListener("DOMContentLoaded", () => {
         renderMenu(data.respostas);
     }
 
-    // Função para renderizar uma solução específica
-    function renderResposta(resposta) {
-        const app = document.getElementById("app");
-        app.innerHTML = `
-            <h2>${resposta.titulo}</h2>
-            <p>${resposta.descricao}</p>
-            <div style="margin: 20px 0;">
-                <h3>Approach</h3>
-                <p>${resposta.abordagem || "No approach provided for this solution."}</p>
-            </div>
-            <div style="margin: 20px 0;">
-                <img src="${resposta.diagramaAtividades}" alt="Activity Diagram" style="max-width: 100%; height: auto;">
-            </div>
-            <div style="display: flex; justify-content: center; gap: 10px;">
-                <button id="btnPython" class="btn-icon" title="Solution in Python">
-                    <i class="fab fa-python" style="font-size: 24px;"></i>
-                </button>
-                <button id="btnJava" class="btn-icon" title="Solution in Java">
-                    <i class="fab fa-java" style="font-size: 24px;"></i>
-                </button>
-            </div>
-            <div id="solutionContent"></div>
-        `;
+// Função para renderizar uma solução específica
+function renderResposta(resposta) {
+    const app = document.getElementById("app");
+    
+    // Renderizar o conteúdo principal da solução
+    app.innerHTML = `
+        <h2>${resposta.titulo}</h2>
+        <p>${resposta.descricao}</p>
+        <div style="margin: 20px 0;">
+            <h3>Approach</h3>
+            <p>${resposta.abordagem || "No approach provided for this solution."}</p>
+        </div>
+        <div style="margin: 20px 0;">
+            <img src="${resposta.diagramaAtividades}" alt="Activity Diagram" style="max-width: 100%; height: auto;">
+        </div>
+        <div id="languageButtons" style="display: flex; justify-content: center; gap: 10px;"></div>
+        <div id="solutionContent"></div>
+    `;
 
-        // Configurar eventos dos botões
-        document.getElementById("btnPython").addEventListener("click", () => {
-            renderSolution("python", resposta.id);
-        });
+    // Lista de linguagens suportadas para a solução
+    const supportedLanguages = ["python", "java", "javascript"];
 
-        document.getElementById("btnJava").addEventListener("click", () => {
-            renderSolution("java", resposta.id);
-        });
-    }
+    // Renderizar botões dinamicamente para cada linguagem suportada
+    const languageButtonsContainer = document.getElementById("languageButtons");
 
-    // Função para carregar o conteúdo da solução
+    supportedLanguages.forEach(language => {
+        const button = document.createElement("button");
+        button.className = "btn-icon";
+        button.id = `btn${language.charAt(0).toUpperCase() + language.slice(1)}`;
+        button.title = `Solution in ${language.charAt(0).toUpperCase() + language.slice(1)}`;
+        button.innerHTML = `<i class="fab fa-${language === "javascript" ? "js-square" : language}" style="font-size: 24px;"></i>`;
+        button.addEventListener("click", () => renderSolution(language, resposta.id));
+        languageButtonsContainer.appendChild(button);
+    });
+}
+
+
+// Função para carregar o conteúdo da solução
     function renderSolution(language, solutionId) {
         const solutionContainer = document.getElementById("solutionContent");
 
